@@ -12,7 +12,23 @@ app.use(
       "Upgrade-Insecure-Requests",
       "Content-Type",
     ],
-    allowMethods: ["GET", "HEAD", "PUT", "POST", "DELETE"],
+    allowMethods: ["GET", "POST", "OPTIONS"],
+    exposeHeaders: ["Content-Length", "X-Kuma-Revision"],
+    maxAge: 600,
+    credentials: true,
+  })
+);
+
+app.use(
+  "/todos/*",
+  cors({
+    origin: ["{許可するURL1}", "{許可するURL2}"],
+    allowHeaders: [
+      "X-Custom-Header",
+      "Upgrade-Insecure-Requests",
+      "Content-Type",
+    ],
+    allowMethods: ["GET", "PUT", "DELETE", "OPTIONS"],
     exposeHeaders: ["Content-Length", "X-Kuma-Revision"],
     maxAge: 600,
     credentials: true,
