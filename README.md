@@ -58,9 +58,9 @@ GETとPOSTでしか使わない
 app.use(
   "/todos",
   cors({
-		origin: ["{許可するURL1}", "{許可するURL2}"],
-		allowHeaders: [
-			"X-Custom-Header",
+    origin: ["{許可するURL1}", "{許可するURL2}"],
+    allowHeaders: [
+    "X-Custom-Header",
       "Upgrade-Insecure-Requests",
       "Content-Type",
     ],
