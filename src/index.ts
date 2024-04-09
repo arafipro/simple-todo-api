@@ -1,6 +1,23 @@
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 
 const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
+
+app.use(
+  "/todos",
+  cors({
+    origin: ["{許可するURL1}", "{許可するURL2}"],
+    allowHeaders: [
+      "X-Custom-Header",
+      "Upgrade-Insecure-Requests",
+      "Content-Type",
+    ],
+    allowMethods: ["GET", "HEAD", "PUT", "POST", "DELETE"],
+    exposeHeaders: ["Content-Length", "X-Kuma-Revision"],
+    maxAge: 600,
+    credentials: true,
+  })
+);
 
 // 全件取得
 app.get("/todos", async (c) => {
