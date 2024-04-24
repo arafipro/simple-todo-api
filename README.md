@@ -73,7 +73,7 @@ app.use(
 #### /todos/*
 
 idを指定したURLの場合
-GETとPUTTとDELETEでしか使わない
+GETとPUTとDELETEでしか使わない
 
 ```ts:src/index.ts
 app.use(
